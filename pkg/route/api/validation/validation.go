@@ -3,7 +3,7 @@ package validation
 import (
 	"fmt"
 	"strings"
-        "strcov"
+        "strconv"
         
 	"github.com/GoogleCloudPlatform/kubernetes/pkg/api/validation"
 	kval "github.com/GoogleCloudPlatform/kubernetes/pkg/api/validation"
@@ -27,7 +27,7 @@ func ValidateRoute(route *routeapi.Route) fielderrors.ValidationErrorList {
 		if !util.IsDNS1123Subdomain(hostport[0]) {
 			result = append(result, fielderrors.NewFieldInvalid("host", hostport[0], "host must conform to DNS 952 subdomain conventions"))
 		}
-		if (len(hostport[1]) > 0) && !util.IsValidPortNum(strcov.Atoi(hostport[1])) {
+		if (len(hostport[1]) > 0) && !util.IsValidPortNum(strconv.Atoi(hostport[1])) {
                         result = append(result, fielderrors.NewFieldInvalid("port", hostport[1], "port must be a valid non-zero port number"))
                 }
 	}
