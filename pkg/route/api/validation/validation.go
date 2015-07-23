@@ -31,7 +31,7 @@ func ValidateRoute(route *routeapi.Route) fielderrors.ValidationErrorList {
                     port, err := strconv.Atoi(hostport[1])
                     if (err != nil) {
                         result = append(result, fielderrors.NewFieldInvalid("port", hostport[1], "port must be a valid non-zero port number"))
-                    } else if !util.IsValidPortNum(port)) {
+                    } else if !util.IsValidPortNum(port) {
                         result = append(result, fielderrors.NewFieldInvalid("port", hostport[1], "port must be a valid non-zero port number"))
                     }
                 }
